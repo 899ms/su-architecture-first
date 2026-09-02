@@ -10,6 +10,24 @@ It helps the agent locate the real goal, owning layer, source of truth, root cau
 
 Clear local tasks get a lightweight preflight and move directly into implementation. Full structural analysis is reserved for recurring problems, cross-layer changes, conflicting sources of truth, or high-risk work. This is a decision preflight—not a reason to draw the whole system or a substitute for a task-specific technology comparison.
 
+## Quick install
+
+Give this one sentence to an agent that can access GitHub and install local Skills:
+
+```text
+Install the Agent Skill from https://github.com/doublesq97-ui/su-architecture-first for my user account, keep the whole skill directory together, and verify that su-architecture-first is discoverable.
+```
+
+## Git clone
+
+Clone or download the repository, then place the complete `su-architecture-first` folder in the personal or project Skills directory recognized by your agent:
+
+```bash
+git clone https://github.com/doublesq97-ui/su-architecture-first
+```
+
+Keep `SKILL.md`, `agents/`, and `references/` together, then reload the agent if it does not discover the Skill immediately.
+
 ## Who it is for
 
 > **Anyone using Codex or another coding agent to make engineering changes.**
@@ -39,22 +57,6 @@ The Skill is complete on its own. Its runtime core is plain `SKILL.md` plus Mark
 
 Clients without a native Skill loader can still use the repository as an instruction bundle: attach the files and ask the agent to read `SKILL.md` first. In that mode, persistence and automatic activation depend on the client.
 
-## Install
-
-Give this one sentence to an agent that can access GitHub and install local Skills:
-
-```text
-Install the Agent Skill from https://github.com/doublesq97-ui/su-architecture-first for my user account, keep the whole skill directory together, and verify that su-architecture-first is discoverable.
-```
-
-For manual installation, clone or download the repository and place the complete `su-architecture-first` folder in the personal or project Skills directory recognized by your agent:
-
-```bash
-git clone https://github.com/doublesq97-ui/su-architecture-first
-```
-
-Keep `SKILL.md`, `agents/`, and `references/` together, then reload the agent if it does not discover the Skill immediately.
-
 ## Trigger it
 
 Natural-language prompt:
@@ -64,21 +66,6 @@ Use architecture-first reasoning for this problem. First infer my real intent fr
 ```
 
 If a request contains the Chinese phrase `架构优先`—including `用架构优先的方式看这个问题`—invoke this Skill without requiring the user to name it.
-
-Explicit syntax varies by client:
-
-| Agent client | Support mode | Explicit use |
-|---|---|---|
-| Codex CLI / IDE | Native Skill | `$su-architecture-first ...` |
-| Claude Code | Native Skill | `/su-architecture-first ...` |
-| GitHub Copilot CLI | Native Skill | `/su-architecture-first ...` |
-| Gemini CLI | Native Skill | Say `Use su-architecture-first: ...` or ask in natural language |
-| OpenCode | Native Skill | Ask in natural language; the agent loads the Skill when relevant |
-| WorkBuddy | Native Skill | Say `Use su-architecture-first: ...` after importing the Skill package |
-| Qoder / Qoder CLI | Native Skill | Type `/` and select the Skill, or use `/su-architecture-first ...` in Qoder CLI |
-| QwenWork / 千问办公 | Native Skill | Type `/` and select the Skill, or say `使用 su-architecture-first：...` |
-| Doubao desktop / 豆包桌面端 | Instruction bundle | Attach the repository files, then say `Read SKILL.md first and use architecture-first reasoning: ...` |
-| Other file-capable agents | Native Skill or instruction bundle | Install the folder when supported; otherwise attach it and invoke it in natural language |
 
 ### Automatic activation
 

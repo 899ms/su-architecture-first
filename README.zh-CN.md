@@ -10,6 +10,24 @@
 
 清楚的局部任务走轻量预检后直接开工；只有遇到复发、跨层、事实源冲突或高风险变更时，才展开完整结构分析。它是一道决策预检，不是为了画完整系统全图，也不能替代针对具体任务的技术方案比较。
 
+## 快速安装
+
+把下面这句话发给能够访问 GitHub 并安装本地 Skill 的 Agent：
+
+```text
+请把 https://github.com/doublesq97-ui/su-architecture-first 里的 Agent Skill 安装到我的个人 Skill 目录，完整保留整个 Skill 文件夹，并确认 su-architecture-first 已能被发现。
+```
+
+## Git clone
+
+克隆或下载仓库，再把完整的 `su-architecture-first` 文件夹放进当前 Agent 能识别的个人或项目 Skill 目录：
+
+```bash
+git clone https://github.com/doublesq97-ui/su-architecture-first
+```
+
+请保持 `SKILL.md`、`agents/` 和 `references/` 在同一个目录中。如果 Agent 没有立即发现 Skill，重新加载一次。
+
 ## 谁适合使用
 
 > **所有使用 Codex 或编码 Agent 进行工程变更的人。**
@@ -39,22 +57,6 @@
 
 尚未提供原生 Skill 加载器的客户端，也可以把仓库作为指令包使用：上传这些文件，并要求 Agent 先读取 `SKILL.md`。在这种模式下，能否长期保存和自动触发取决于客户端本身。
 
-## 安装
-
-把下面这句话发给能够访问 GitHub 并安装本地 Skill 的 Agent：
-
-```text
-请把 https://github.com/doublesq97-ui/su-architecture-first 里的 Agent Skill 安装到我的个人 Skill 目录，完整保留整个 Skill 文件夹，并确认 su-architecture-first 已能被发现。
-```
-
-手动安装时，克隆或下载仓库，再把完整的 `su-architecture-first` 文件夹放进当前 Agent 能识别的个人或项目 Skill 目录：
-
-```bash
-git clone https://github.com/doublesq97-ui/su-architecture-first
-```
-
-请保持 `SKILL.md`、`agents/` 和 `references/` 在同一个目录中。如果 Agent 没有立即发现 Skill，重新加载一次。
-
 ## 主动触发
 
 推荐直接使用这句自然语言：
@@ -64,21 +66,6 @@ git clone https://github.com/doublesq97-ui/su-architecture-first
 ```
 
 只要用户请求中出现“架构优先”四个字——包括“用架构优先的方式看这个问题”——就调用这个 Skill，不要求用户再写 Skill 名称。
-
-不同客户端的显式触发方式并不完全相同：
-
-| Agent 客户端 | 支持方式 | 显式使用方式 |
-|---|---|---|
-| Codex CLI / IDE | 原生 Skill | `$su-architecture-first ...` |
-| Claude Code | 原生 Skill | `/su-architecture-first ...` |
-| GitHub Copilot CLI | 原生 Skill | `/su-architecture-first ...` |
-| Gemini CLI | 原生 Skill | 说：`使用 su-architecture-first：...`，或直接用自然语言提出 |
-| OpenCode | 原生 Skill | 用自然语言提出；相关时由 Agent 加载 Skill |
-| WorkBuddy | 原生 Skill | 导入 Skill 包后说：`使用 su-architecture-first：...` |
-| Qoder / Qoder CLI | 原生 Skill | 输入 `/` 后选择该 Skill；Qoder CLI 也可使用 `/su-architecture-first ...` |
-| 千问办公 / QwenWork | 原生 Skill | 输入 `/` 后选择该 Skill，或说：`使用 su-architecture-first：...` |
-| 豆包桌面端 | 指令包 | 上传仓库文件后说：`先读取 SKILL.md，再用架构优先的方法处理……` |
-| 其他可读取文件的 Agent | 原生 Skill 或指令包 | 支持安装时安装整个文件夹；否则上传文件并用自然语言调用 |
 
 ### 被动触发
 
