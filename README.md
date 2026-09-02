@@ -14,7 +14,7 @@ It helps an AI agent working on engineering locate the real goal, owning layer, 
 - Inspects the existing system and its authoritative sources.
 - Locates the owning layer and responsible object.
 - Treats recurring failures as structural until evidence says otherwise.
-- Checks deletion and consolidation before adding logic.
+- Checks whether proven wrong, obsolete, duplicate, or superseded logic can be safely removed before adding more; deletion is never automatic.
 - Distinguishes delete, refactor, implement, hide, copy, and UI work.
 - Defines acceptance and regression evidence before mutation.
 - Keeps internal AI and workflow complexity out of normal user work.
@@ -41,10 +41,10 @@ Explicit syntax varies by client:
 
 | Agent client | Support mode | Explicit use |
 |---|---|---|
-| Codex CLI / IDE | Native Skill | `$su-architecture-first ...` or open `/skills` and select it |
+| Codex CLI / IDE | Native Skill | `$su-architecture-first ...` |
 | Claude Code | Native Skill | `/su-architecture-first ...` |
 | GitHub Copilot CLI | Native Skill | `/su-architecture-first ...` |
-| Gemini CLI | Native Skill | Ask in natural language; use `/skills list` to verify discovery |
+| Gemini CLI | Native Skill | Say `Use su-architecture-first: ...` or ask in natural language |
 | OpenCode | Native Skill | Ask in natural language; the agent loads the Skill when relevant |
 | WorkBuddy | Native Skill | Say `Use su-architecture-first: ...` after importing the Skill package |
 | Qoder / Qoder CLI | Native Skill | Type `/` and select the Skill, or use `/su-architecture-first ...` in Qoder CLI |

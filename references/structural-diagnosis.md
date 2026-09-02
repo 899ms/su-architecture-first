@@ -42,7 +42,7 @@ Before adding behavior, look for:
 - patch-specific conditions masking a missing invariant;
 - separate implementations of one interaction contract.
 
-Deletion is correct only when the removed behavior is wrong, obsolete, duplicated, or replaced by an authoritative path. Preserve behavior that still carries a real user or system obligation.
+Deletion is an evidence-backed outcome, not a default. It is correct only when the removed behavior is wrong, obsolete, duplicated, or replaced by an authoritative path, and acceptance or regression evidence covers what must remain. Simplicity alone is not evidence. Preserve behavior that still carries a real user or system obligation, and never delete outside the user's approved scope.
 
 ## Stronger Fix Test
 

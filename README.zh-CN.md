@@ -14,7 +14,7 @@
 - 检查现有系统和权威事实源。
 - 定位真正负责的层与对象。
 - 在证据证明并非如此前，把复发问题优先当作结构问题调查。
-- 增加逻辑前先检查是否应该删除或合并。
+- 增加逻辑前，先检查有证据证明错误、过时、重复或已被替代的逻辑能否安全移除；删除从来不是自动答案。
 - 区分删除、重构、实现、隐藏、文案修改和 UI 优化。
 - 改动前定义验收与回归证据。
 - 不把 AI 与工作流的内部复杂度转嫁给普通用户。
@@ -41,10 +41,10 @@ Architecture first: confirm the goal, owning layer, change type, and validation,
 
 | Agent 客户端 | 支持方式 | 显式使用方式 |
 |---|---|---|
-| Codex CLI / IDE | 原生 Skill | `$su-architecture-first ...`，或打开 `/skills` 后选择它 |
+| Codex CLI / IDE | 原生 Skill | `$su-architecture-first ...` |
 | Claude Code | 原生 Skill | `/su-architecture-first ...` |
 | GitHub Copilot CLI | 原生 Skill | `/su-architecture-first ...` |
-| Gemini CLI | 原生 Skill | 用自然语言提出；用 `/skills list` 检查是否已发现 |
+| Gemini CLI | 原生 Skill | 说：`使用 su-architecture-first：...`，或直接用自然语言提出 |
 | OpenCode | 原生 Skill | 用自然语言提出；相关时由 Agent 加载 Skill |
 | WorkBuddy | 原生 Skill | 导入 Skill 包后说：`使用 su-architecture-first：...` |
 | Qoder / Qoder CLI | 原生 Skill | 输入 `/` 后选择该 Skill；Qoder CLI 也可使用 `/su-architecture-first ...` |

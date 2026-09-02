@@ -26,7 +26,7 @@ Use for fixes, features, refactors, recurring failures, patch accumulation, conf
 
 - Trace the symptom or request to the component and authoritative source that can produce it.
 - Treat recurrence as structural until evidence localizes it to a one-off fault.
-- Check deletion and consolidation before adding behavior.
+- Before adding behavior, check whether existing logic can be safely removed or consolidated.
 - Make invalid states harder or impossible to produce when the system can enforce that rule.
 
 ### Customer and Product
@@ -60,7 +60,9 @@ Complete when each material problem has an owning layer, responsible object, sou
 
 ### 4. Classify the change
 
-Choose among delete, refactor, implement, hide, copy change, and UI polish. Preserve meaningful behavior while removing wrong, obsolete, duplicate, or transitional logic. Sequence structural work before surface polish.
+Choose among delete, refactor, implement, hide, copy change, and UI polish. Deletion is a candidate, not the default. Choose or perform it only when evidence shows that the target is wrong, obsolete, duplicated, or superseded and acceptance or regression evidence covers the behavior that must remain. Simplicity alone is not justification, and this analysis never authorizes deletion outside the user's approved scope.
+
+Preserve meaningful behavior while removing proven residue. Sequence structural work before surface polish.
 
 Complete when every proposed action has one primary class and a reason that matches the owning layer.
 
