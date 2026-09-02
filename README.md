@@ -4,9 +4,23 @@
   <strong>English</strong> · <a href="./README.zh-CN.md">简体中文</a>
 </p>
 
-A lightweight architecture-first Agent Skill for engineering work—from small fixes and ordinary features to recurring failures and system changes.
+A lightweight architecture-first Agent Skill for anyone using Codex or another coding agent to make engineering changes—from small fixes and ordinary features to recurring failures and system changes.
 
-It helps an AI agent working on engineering locate the real goal, owning layer, source of truth, root cause, correct change type, and validation evidence before changing the system. The depth scales with the work: clear local changes get a quick pass; ambiguous, recurring, cross-layer, or high-risk changes get a full review.
+It helps the agent locate the real goal, owning layer, source of truth, root cause, correct change type, and validation evidence before changing the system.
+
+## Who it is for
+
+> **Anyone using Codex or another coding agent to make engineering changes.**
+
+- **Solo developers and independent creators** building features, fixing small issues, automating work, or maintaining personal projects.
+- **Software engineers and full-stack developers** developing features, fixing bugs, refactoring code, or changing system behavior.
+- **Product engineers and technical founders** balancing user value, product structure, and engineering implementation.
+- **Project maintainers and technical leads** dealing with recurring problems, accumulated patches, conflicting state, or unclear ownership.
+- **AI application and agent-product developers** building AI workbenches, multi-agent systems, file processing, or execution workflows.
+- **Automation and internal-tool developers** clarifying flows, state, executors, result return, and save locations.
+- **Engineering teams collaborating with coding agents** seeking consistent preflight decisions, change classification, and regression standards.
+
+Clear tasks get a lightweight preflight and move directly into implementation. Full structural analysis is reserved for recurring problems, cross-layer changes, conflicting sources of truth, or high-risk work.
 
 ## What it does
 
