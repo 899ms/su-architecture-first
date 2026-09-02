@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/su-architecture-first-hero.png" alt="su-architecture-first — Know what to change before the agent changes it." width="100%">
+  <img src="./assets/su-architecture-first-hero.webp" alt="su-architecture-first — Know what to change before the agent changes it." width="100%">
 </p>
 
 # su-architecture-first
@@ -71,6 +71,12 @@ Use architecture-first reasoning for this problem. First infer my real intent fr
 
 If a request contains the Chinese phrase `架构优先`—including `用架构优先的方式看这个问题`—invoke this Skill without requiring the user to name it.
 
+Or invoke it directly:
+
+```text
+/su-architecture-first Use architecture-first reasoning for this problem.
+```
+
 ### Automatic activation
 
 Even without an explicit architecture-first phrase, the Skill should activate when:
@@ -93,7 +99,7 @@ For a small, clear change:
 For a recurring problem:
 
 ```text
-Use $su-architecture-first to find why this task state keeps diverging, choose the owning layer, and define regression evidence before changing code.
+/su-architecture-first Find why this task state keeps diverging, choose the owning layer, and define regression evidence before changing code.
 ```
 
 For an authorized implementation:
@@ -112,7 +118,7 @@ The core decision path stays in `SKILL.md`. Focused references load only when ne
 - acceptance and regression design;
 - AI workbench and Chat-first patterns.
 
-Chinese reading copies are available in [docs/zh-CN](docs/zh-CN/), including a [Chinese version of the Skill body](docs/zh-CN/SKILL.zh-CN.md). The root English `SKILL.md` remains the single discoverable Skill.
+The root English `SKILL.md` is the discoverable runtime Skill.
 
 Tested with realistic product and engineering scenarios.
 

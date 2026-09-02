@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/su-architecture-first-hero.png" alt="su-architecture-first — 在 Agent 修改之前，先知道应该改什么。" width="100%">
+  <img src="./assets/su-architecture-first-hero.webp" alt="su-architecture-first — 在 Agent 修改之前，先知道应该改什么。" width="100%">
 </p>
 
 # su-architecture-first
@@ -71,6 +71,12 @@ git clone https://github.com/doublesq97-ui/su-architecture-first
 
 只要用户请求中出现“架构优先”四个字——包括“用架构优先的方式看这个问题”——就调用这个 Skill，不要求用户再写 Skill 名称。
 
+也可以直接显式调用：
+
+```text
+/su-architecture-first 用架构优先的方式看这个问题。
+```
+
 ### 被动触发
 
 即使用户没有主动说“架构优先”，出现以下情况时也应自动调用：
@@ -112,7 +118,7 @@ git clone https://github.com/doublesq97-ui/su-architecture-first
 - 验收与回归设计；
 - AI 工作台与 Chat-first 模式。
 
-完整中文对照内容位于 [docs/zh-CN](docs/zh-CN/)，其中包括 [Skill 本体中文对照版](docs/zh-CN/SKILL.zh-CN.md)。仓库根目录的英文 `SKILL.md` 始终是唯一会被发现的 Skill。
+仓库根目录的英文 `SKILL.md` 是唯一运行本体。
 
 已使用真实的产品与工程场景进行测试。
 

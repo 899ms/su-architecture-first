@@ -1,6 +1,6 @@
 ---
 name: su-architecture-first
-description: Architecture-first preflight for engineering changes of any size. Always use when the request contains 架构优先, including 架构优先的方式, or explicitly asks for first-principles, layered, ownership, or source-of-truth analysis. Also use for recurring failures, patch accumulation, conflicting state or facts, unclear ownership, cross-layer or high-risk work, or user-facing leaks of AI or workflow complexity. Use a quick pass for clear local changes and a full pass only when risk or ambiguity warrants it. This is a decision preflight, not a full-system-diagram or technology-selection workflow.
+description: Architecture-first preflight for engineering changes that require resolving the real goal, owning layer, source of truth, change class, or validation boundary. Always use when the request contains 架构优先, including 架构优先的方式, or explicitly asks for first-principles, layered, ownership, or source-of-truth analysis. Also use for recurring failures, patch accumulation, conflicting state or facts, unclear ownership, cross-layer or high-risk work, or user-facing leaks of AI or workflow complexity. Use a quick pass for clear local changes and a full pass only when risk or ambiguity warrants it. This is a decision preflight, not a full-system-diagram or technology-selection workflow.
 ---
 
 # Su Architecture First
