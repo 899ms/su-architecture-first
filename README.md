@@ -8,6 +8,8 @@ A lightweight architecture-first Agent Skill for anyone using Codex or another c
 
 It helps the agent locate the real goal, owning layer, source of truth, root cause, correct change type, and validation evidence before changing the system.
 
+Clear local tasks get a lightweight preflight and move directly into implementation. Full structural analysis is reserved for recurring problems, cross-layer changes, conflicting sources of truth, or high-risk work. This is a decision preflight—not a reason to draw the whole system or a substitute for a task-specific technology comparison.
+
 ## Who it is for
 
 > **Anyone using Codex or another coding agent to make engineering changes.**
@@ -19,8 +21,6 @@ It helps the agent locate the real goal, owning layer, source of truth, root cau
 - **AI application and agent-product developers** building AI workbenches, multi-agent systems, file processing, or execution workflows.
 - **Automation and internal-tool developers** clarifying flows, state, executors, result return, and save locations.
 - **Engineering teams collaborating with coding agents** seeking consistent preflight decisions, change classification, and regression standards.
-
-Clear tasks get a lightweight preflight and move directly into implementation. Full structural analysis is reserved for recurring problems, cross-layer changes, conflicting sources of truth, or high-risk work.
 
 ## What it does
 
@@ -39,17 +39,31 @@ The Skill is complete on its own. Its runtime core is plain `SKILL.md` plus Mark
 
 Clients without a native Skill loader can still use the repository as an instruction bundle: attach the files and ask the agent to read `SKILL.md` first. In that mode, persistence and automatic activation depend on the client.
 
+## Install
+
+Give this one sentence to an agent that can access GitHub and install local Skills:
+
+```text
+Install the Agent Skill from https://github.com/doublesq97-ui/su-architecture-first for my user account, keep the whole skill directory together, and verify that su-architecture-first is discoverable.
+```
+
+For manual installation, clone or download the repository and place the complete `su-architecture-first` folder in the personal or project Skills directory recognized by your agent:
+
+```bash
+git clone https://github.com/doublesq97-ui/su-architecture-first
+```
+
+Keep `SKILL.md`, `agents/`, and `references/` together, then reload the agent if it does not discover the Skill immediately.
+
 ## Trigger it
 
-Natural language works across compatible agents:
+Natural-language prompt:
 
 ```text
-Architecture first: confirm the goal, owning layer, change type, and validation, then continue.
+Use architecture-first reasoning for this problem. First infer my real intent from the available context. Only if a material uncertainty could change the outcome, pause to ask me, with at most two questions in one clarification turn. If I am unsure, do not repeat the same question; guide me with concrete options, examples, or tradeoffs until we agree on the goal, scope, and task granularity, then start the work.
 ```
 
-```text
-架构优先：先确认目标、责任层、变更类型和验证方式，然后继续。
-```
+If a request contains the Chinese phrase `架构优先`—including `用架构优先的方式看这个问题`—invoke this Skill without requiring the user to name it.
 
 Explicit syntax varies by client:
 
@@ -66,37 +80,16 @@ Explicit syntax varies by client:
 | Doubao desktop / 豆包桌面端 | Instruction bundle | Attach the repository files, then say `Read SKILL.md first and use architecture-first reasoning: ...` |
 | Other file-capable agents | Native Skill or instruction bundle | Install the folder when supported; otherwise attach it and invoke it in natural language |
 
-The description also supports automatic activation for recurring problems, accumulated patches, conflicting state, unclear responsibility, or internal complexity leaking into the user experience.
+### Automatic activation
 
-## Quick install
+Even without an explicit architecture-first phrase, the Skill should activate when:
 
-Give this one sentence to an agent that can access GitHub and install local Skills:
-
-```text
-Install the Agent Skill from https://github.com/doublesq97-ui/su-architecture-first for my user account, keep the whole skill directory together, and verify that su-architecture-first is discoverable.
-```
-
-## Manual install
-
-Some compatible clients discover personal Skills from `~/.agents/skills/`; others use their own directory or an import screen:
-
-```bash
-git clone https://github.com/doublesq97-ui/su-architecture-first ~/.agents/skills/su-architecture-first
-```
-
-| Agent client | Personal Skill location or installer |
-|---|---|
-| [Codex](https://developers.openai.com/codex/skills) | `~/.agents/skills/su-architecture-first` |
-| [Claude Code](https://code.claude.com/docs/en/slash-commands) | `~/.claude/skills/su-architecture-first` |
-| [Gemini CLI](https://geminicli.com/docs/cli/tutorials/skills-getting-started/) | `gemini skills install https://github.com/doublesq97-ui/su-architecture-first` |
-| [GitHub Copilot](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills) | `~/.agents/skills/su-architecture-first` |
-| [OpenCode](https://opencode.ai/docs/skills) | `~/.agents/skills/su-architecture-first` |
-| [WorkBuddy](https://cloud.tencent.com/document/product/1831/134432) | Open **Experts · Skills · Connectors → Add Skill → Upload Skill**, then import the repository folder or ZIP |
-| [Qoder](https://docs.qoder.com/qoder/skills) | Open **Extensions → Skills → Add Skills → Upload Skill** and import a ZIP; Qoder CLI can use `~/.qoder/skills/su-architecture-first` |
-| [QwenWork / 千问办公](https://help.aliyun.com/zh/qwenwork/skills) | Give the repository URL to QwenWork, or place the folder at `~/.qwenworkcn/skills/su-architecture-first` |
-| [Doubao desktop / 豆包桌面端](https://www.doubao.com/download/desktop) | Use the repository as an instruction bundle by uploading its files; a native persistent `SKILL.md` installer is not currently documented |
-
-Keep `SKILL.md`, `agents/`, and `references/` together, then reload the client if it does not discover the Skill immediately.
+- the same problem recurs or previous fixes keep failing;
+- patches, duplicate logic, or workarounds are accumulating;
+- state or sources of truth conflict;
+- the owning layer, responsible object, or correct change type is unclear;
+- a change crosses layers or carries material migration, data, permission, or user-flow risk;
+- internal AI or workflow complexity is becoming a user obligation.
 
 ## Example requests
 

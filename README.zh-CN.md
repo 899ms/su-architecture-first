@@ -8,6 +8,8 @@
 
 它帮助 Agent 在改动系统前确认真实目标、责任层、唯一事实源、根因、正确的变更类型和验证证据。
 
+清楚的局部任务走轻量预检后直接开工；只有遇到复发、跨层、事实源冲突或高风险变更时，才展开完整结构分析。它是一道决策预检，不是为了画完整系统全图，也不能替代针对具体任务的技术方案比较。
+
 ## 谁适合使用
 
 > **所有使用 Codex 或编码 Agent 进行工程变更的人。**
@@ -19,8 +21,6 @@
 - **AI 应用与 Agent 产品开发者**：构建 AI 工作台、多 Agent 系统、文件处理或执行工作流。
 - **自动化与内部工具开发者**：需要厘清流程、状态、执行者、结果返回和保存位置。
 - **使用编码 Agent 协作的工程团队**：希望形成一致的开工判断、变更分类和回归标准。
-
-简单任务走轻量预检后直接开工；只有遇到复发、跨层、事实源冲突或高风险变更时，才展开完整结构分析。
 
 ## 它能做什么
 
@@ -39,17 +39,31 @@
 
 尚未提供原生 Skill 加载器的客户端，也可以把仓库作为指令包使用：上传这些文件，并要求 Agent 先读取 `SKILL.md`。在这种模式下，能否长期保存和自动触发取决于客户端本身。
 
+## 安装
+
+把下面这句话发给能够访问 GitHub 并安装本地 Skill 的 Agent：
+
+```text
+请把 https://github.com/doublesq97-ui/su-architecture-first 里的 Agent Skill 安装到我的个人 Skill 目录，完整保留整个 Skill 文件夹，并确认 su-architecture-first 已能被发现。
+```
+
+手动安装时，克隆或下载仓库，再把完整的 `su-architecture-first` 文件夹放进当前 Agent 能识别的个人或项目 Skill 目录：
+
+```bash
+git clone https://github.com/doublesq97-ui/su-architecture-first
+```
+
+请保持 `SKILL.md`、`agents/` 和 `references/` 在同一个目录中。如果 Agent 没有立即发现 Skill，重新加载一次。
+
 ## 主动触发
 
-兼容的 Agent 都可以使用自然语言：
+推荐直接使用这句自然语言：
 
 ```text
-架构优先：先确认目标、责任层、变更类型和验证方式，然后继续。
+用架构优先的方式看这个问题。先结合现有信息理解我的真实意图；只有仍存在会改变结果的关键不确定时，停下来向我确认，每轮最多问两个问题。如果我也不确定，不要重复追问同一个问题，请用具体选项、例子或取舍继续引导，直到我们对目标、范围和任务颗粒度达成一致，然后直接开工。
 ```
 
-```text
-Architecture first: confirm the goal, owning layer, change type, and validation, then continue.
-```
+只要用户请求中出现“架构优先”四个字——包括“用架构优先的方式看这个问题”——就调用这个 Skill，不要求用户再写 Skill 名称。
 
 不同客户端的显式触发方式并不完全相同：
 
@@ -66,37 +80,16 @@ Architecture first: confirm the goal, owning layer, change type, and validation,
 | 豆包桌面端 | 指令包 | 上传仓库文件后说：`先读取 SKILL.md，再用架构优先的方法处理……` |
 | 其他可读取文件的 Agent | 原生 Skill 或指令包 | 支持安装时安装整个文件夹；否则上传文件并用自然语言调用 |
 
-当任务出现复发问题、补丁累积、状态冲突、责任不清，或内部复杂度泄漏到用户体验时，Skill 描述也支持自动触发。
+### 被动触发
 
-## 一句话安装
+即使用户没有主动说“架构优先”，出现以下情况时也应自动调用：
 
-把下面这句话发给能够访问 GitHub 并安装本地 Skill 的 Agent：
-
-```text
-请把 https://github.com/doublesq97-ui/su-architecture-first 里的 Agent Skill 安装到我的个人 Skill 目录，完整保留整个 Skill 文件夹，并确认 su-architecture-first 已能被发现。
-```
-
-## 手动安装
-
-部分兼容客户端从 `~/.agents/skills/` 发现个人 Skill，其他客户端使用自己的目录或导入界面：
-
-```bash
-git clone https://github.com/doublesq97-ui/su-architecture-first ~/.agents/skills/su-architecture-first
-```
-
-| Agent 客户端 | 个人 Skill 位置或安装命令 |
-|---|---|
-| [Codex](https://developers.openai.com/codex/skills) | `~/.agents/skills/su-architecture-first` |
-| [Claude Code](https://code.claude.com/docs/en/slash-commands) | `~/.claude/skills/su-architecture-first` |
-| [Gemini CLI](https://geminicli.com/docs/cli/tutorials/skills-getting-started/) | `gemini skills install https://github.com/doublesq97-ui/su-architecture-first` |
-| [GitHub Copilot](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills) | `~/.agents/skills/su-architecture-first` |
-| [OpenCode](https://opencode.ai/docs/skills) | `~/.agents/skills/su-architecture-first` |
-| [WorkBuddy](https://cloud.tencent.com/document/product/1831/134432) | 打开「专家·技能·连接器 → 添加技能 → 上传技能」，导入仓库文件夹或 ZIP |
-| [Qoder](https://docs.qoder.com/qoder/skills) | 打开「Extensions → Skills → Add Skills → Upload Skill」导入 ZIP；Qoder CLI 也可放到 `~/.qoder/skills/su-architecture-first` |
-| [千问办公 / QwenWork](https://help.aliyun.com/zh/qwenwork/skills) | 直接把仓库链接发给千问办公，或把文件夹放到 `~/.qwenworkcn/skills/su-architecture-first` |
-| [豆包桌面端](https://www.doubao.com/download/desktop) | 上传仓库文件，把它作为指令包使用；目前官方尚未说明原生、持久化的 `SKILL.md` 安装入口 |
-
-请保持 `SKILL.md`、`agents/` 和 `references/` 在同一个目录中。如果客户端没有立即发现 Skill，重新加载一次。
+- 同一个问题反复出现，或之前的修复不断失效；
+- 补丁、重复逻辑或临时绕行方案持续累积；
+- 状态或唯一事实源彼此冲突；
+- 责任层、责任对象或正确的变更类型不清楚；
+- 变更跨越多个层级，或涉及迁移、数据、权限、关键用户流程等较高风险；
+- AI 或工作流的内部复杂度正在变成用户必须理解和操作的负担。
 
 ## 请求示例
 

@@ -1,20 +1,18 @@
 ---
 name: su-architecture-first
-description: Architecture-first preflight for engineering work of any size. Use when the user explicitly asks for 架构优先, first-principles, layered, ownership, or source-of-truth analysis; when a recurring problem or accumulated patches suggest a structural cause; when conflicting state or unclear responsibility makes the correct layer or change type uncertain; or when internal AI or workflow complexity leaks into the user experience.
+description: Architecture-first preflight for engineering changes of any size. Always use when the request contains 架构优先, including 架构优先的方式, or explicitly asks for first-principles, layered, ownership, or source-of-truth analysis. Also use for recurring failures, patch accumulation, conflicting state or facts, unclear ownership, cross-layer or high-risk work, or user-facing leaks of AI or workflow complexity. Use a quick pass for clear local changes and a full pass only when risk or ambiguity warrants it. This is a decision preflight, not a full-system-diagram or technology-selection workflow.
 ---
 
 # Su Architecture First
 
 Run the smallest architecture-first preflight that makes the work safe and checkable. Decide what should change, which layer owns it, and what evidence will prove it.
 
-A review is complete when each material problem has a real goal, an owning layer and object, a source of truth, a root-cause judgment, a change class, a next step, and validation evidence.
-
 ## Scale the Depth
 
 Use the same reasoning spine for engineering work of any size, but scale the legwork to the risk:
 
-- **Quick pass:** For a local, reversible change with clear ownership, briefly confirm the outcome, owner, change class, and check, then proceed.
-- **Full pass:** For a recurring, cross-layer, ambiguous, user-visible, or costly change, run the full sequence and load the matching references.
+- **Quick pass:** For a local, reversible change with clear ownership, briefly confirm the real goal, owning layer or object, change class, and check, then proceed.
+- **Full pass:** For a recurring, cross-layer, ambiguous, user-visible, or costly change, run the full sequence and load the matching references. Complete it when each material problem also has a source of truth, an evidence-backed root-cause judgment, a next step, and validation or regression evidence.
 
 This preflight is not a new approval ceremony. Stay in review mode only until the user authorizes implementation for the current scope. When authorization already exists, do not ask again; proceed as soon as the necessary decision and evidence are explicit.
 
@@ -43,6 +41,8 @@ Use when engineering choices affect a customer-facing product, service, workbenc
 ### 1. Resolve the real goal
 
 Identify the outcome, affected user or operator, decision boundary, current authorization, and any ambiguity that could change the result.
+
+Infer intent from the available context before asking. Ask only when a material uncertainty could change the result, and ask no more than two questions in one clarification turn. If the user is unsure, do not repeat the same question. Offer concrete options, examples, or tradeoffs and keep guiding until the goal, scope, and task granularity are aligned.
 
 Complete when the desired change and scope are explicit enough to avoid solving a nearby but different problem.
 
@@ -84,6 +84,8 @@ goal -> relevant structure -> ownership and root cause
 ```
 
 Use prose for a focused decision, a table for repeated mappings, and a tree or diagram only when relationships or ownership are otherwise hard to see.
+
+Do not expand this preflight into a full system map unless the current decision requires one. Do not substitute it for a task-specific technology comparison; for technology selection, use it only to establish the real goal, constraints, ownership, and acceptance evidence before comparing candidates.
 
 ## Load References When Their Condition Applies
 
