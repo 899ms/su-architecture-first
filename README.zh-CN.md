@@ -4,7 +4,7 @@
   <a href="./README.md">English</a> · <strong>简体中文</strong>
 </p>
 
-一个轻量的架构优先 Agent Skill，面向所有使用 AI 编码 Agent 做工程的人：从小修复、普通功能和局部重构，到复发故障与系统级改造都可以使用。
+一个轻量的架构优先 Agent Skill，面向所有使用 AI Agent 做工程的人：从小修复、普通功能和局部重构，到复发故障与系统级改造都可以使用。
 
 它帮助 Agent 在改动系统前确认真实目标、责任层、唯一事实源、根因、正确的变更类型和验证证据。分析深度随任务调整：清楚的局部变更只做快速判断；含糊、复发、跨层或高风险的变更才做完整分析。
 
@@ -21,7 +21,9 @@
 - 让用户可见的产物、执行、返回与保存形成闭环。
 - 只使用当前决策真正需要的架构表达深度。
 
-这个 Skill 本身就是完整能力，不依赖私人增强、个人文件、外部服务、配套 Skill 或特定 Agent 客户端。
+这个 Skill 本身就是完整能力。运行核心只有 `SKILL.md` 和 Markdown 参考资料，全部使用相对路径；不含脚本、MCP 服务、本机绝对路径、厂商专用工具、私人增强或配套 Skill。支持文件型 Agent Skill 的客户端可以原样使用同一个文件夹，不同平台主要只差安装入口、发现机制和工具权限。
+
+尚未提供原生 Skill 加载器的客户端，也可以把仓库作为指令包使用：上传这些文件，并要求 Agent 先读取 `SKILL.md`。在这种模式下，能否长期保存和自动触发取决于客户端本身。
 
 ## 主动触发
 
@@ -37,13 +39,18 @@ Architecture first: confirm the goal, owning layer, change type, and validation,
 
 不同客户端的显式触发方式并不完全相同：
 
-| Agent 客户端 | 显式使用方式 |
-|---|---|
-| Codex CLI / IDE | `$su-architecture-first ...`，或打开 `/skills` 后选择它 |
-| Claude Code | `/su-architecture-first ...` |
-| GitHub Copilot CLI | `/su-architecture-first ...` |
-| Gemini CLI | 用自然语言提出；用 `/skills list` 检查是否已发现 |
-| OpenCode | 用自然语言提出；相关时由 Agent 加载 Skill |
+| Agent 客户端 | 支持方式 | 显式使用方式 |
+|---|---|---|
+| Codex CLI / IDE | 原生 Skill | `$su-architecture-first ...`，或打开 `/skills` 后选择它 |
+| Claude Code | 原生 Skill | `/su-architecture-first ...` |
+| GitHub Copilot CLI | 原生 Skill | `/su-architecture-first ...` |
+| Gemini CLI | 原生 Skill | 用自然语言提出；用 `/skills list` 检查是否已发现 |
+| OpenCode | 原生 Skill | 用自然语言提出；相关时由 Agent 加载 Skill |
+| WorkBuddy | 原生 Skill | 导入 Skill 包后说：`使用 su-architecture-first：...` |
+| Qoder / Qoder CLI | 原生 Skill | 输入 `/` 后选择该 Skill；Qoder CLI 也可使用 `/su-architecture-first ...` |
+| 千问办公 / QwenWork | 原生 Skill | 输入 `/` 后选择该 Skill，或说：`使用 su-architecture-first：...` |
+| 豆包桌面端 | 指令包 | 上传仓库文件后说：`先读取 SKILL.md，再用架构优先的方法处理……` |
+| 其他可读取文件的 Agent | 原生 Skill 或指令包 | 支持安装时安装整个文件夹；否则上传文件并用自然语言调用 |
 
 当任务出现复发问题、补丁累积、状态冲突、责任不清，或内部复杂度泄漏到用户体验时，Skill 描述也支持自动触发。
 
@@ -57,7 +64,7 @@ Architecture first: confirm the goal, owning layer, change type, and validation,
 
 ## 手动安装
 
-多数兼容客户端都能从 `~/.agents/skills/` 发现个人 Skill：
+部分兼容客户端从 `~/.agents/skills/` 发现个人 Skill，其他客户端使用自己的目录或导入界面：
 
 ```bash
 git clone https://github.com/doublesq97-ui/su-architecture-first ~/.agents/skills/su-architecture-first
@@ -70,6 +77,10 @@ git clone https://github.com/doublesq97-ui/su-architecture-first ~/.agents/skill
 | [Gemini CLI](https://geminicli.com/docs/cli/tutorials/skills-getting-started/) | `gemini skills install https://github.com/doublesq97-ui/su-architecture-first` |
 | [GitHub Copilot](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills) | `~/.agents/skills/su-architecture-first` |
 | [OpenCode](https://opencode.ai/docs/skills) | `~/.agents/skills/su-architecture-first` |
+| [WorkBuddy](https://cloud.tencent.com/document/product/1831/134432) | 打开「专家·技能·连接器 → 添加技能 → 上传技能」，导入仓库文件夹或 ZIP |
+| [Qoder](https://docs.qoder.com/qoder/skills) | 打开「Extensions → Skills → Add Skills → Upload Skill」导入 ZIP；Qoder CLI 也可放到 `~/.qoder/skills/su-architecture-first` |
+| [千问办公 / QwenWork](https://help.aliyun.com/zh/qwenwork/skills) | 直接把仓库链接发给千问办公，或把文件夹放到 `~/.qwenworkcn/skills/su-architecture-first` |
+| [豆包桌面端](https://www.doubao.com/download/desktop) | 上传仓库文件，把它作为指令包使用；目前官方尚未说明原生、持久化的 `SKILL.md` 安装入口 |
 
 请保持 `SKILL.md`、`agents/` 和 `references/` 在同一个目录中。如果客户端没有立即发现 Skill，重新加载一次。
 
