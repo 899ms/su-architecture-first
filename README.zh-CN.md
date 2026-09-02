@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./assets/su-architecture-first-hero.png" alt="su-architecture-first — 在 Agent 修改之前，先知道应该改什么。" width="100%">
+</p>
+
 # su-architecture-first
 
 <p align="center">

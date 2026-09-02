@@ -12,7 +12,7 @@ Run the smallest architecture-first preflight that makes the work safe and check
 Use the same reasoning spine for engineering work of any size, but scale the legwork to the risk:
 
 - **Quick pass:** For a local, reversible change with clear ownership, briefly confirm the real goal, owning layer or object, change class, and check, then proceed.
-- **Full pass:** For a recurring, cross-layer, ambiguous, user-visible, or costly change, run the full sequence and load the matching references. Complete it when each material problem also has a source of truth, an evidence-backed root-cause judgment, a next step, and validation or regression evidence.
+- **Full pass:** For a recurring, cross-layer, ambiguous, high-risk, or costly change—or a user-visible change that materially affects workflow, state, permissions, data, or recovery—run the full sequence and load the matching references. Complete it when each material problem also has a source of truth, an evidence-backed root-cause judgment, a next step, and validation or regression evidence.
 
 This preflight is not a new approval ceremony. Stay in review mode only until the user authorizes implementation for the current scope. When authorization already exists, do not ask again; proceed as soon as the necessary decision and evidence are explicit.
 
@@ -92,7 +92,7 @@ Do not expand this preflight into a full system map unless the current decision 
 - Read [references/layer-model.md](references/layer-model.md) when the system needs a stable layer map, architecture tree, or source-of-truth analysis.
 - Read [references/structural-diagnosis.md](references/structural-diagnosis.md) when a failure recurs, patches accumulate, state sources compete, or users carry a workaround.
 - Read [references/change-types.md](references/change-types.md) when actions are mixed together or their dependency order is unclear.
-- Read [references/regression-design.md](references/regression-design.md) before implementation planning or before declaring a structural change complete.
+- Read [references/regression-design.md](references/regression-design.md) for a full pass, when validation or rollback boundaries are unclear, or before declaring a material structural change complete.
 - Read [references/ai-workbench.md](references/ai-workbench.md) only for AI workbenches, multi-agent products, file intake, Chat-first design, internal jobs, execution handoffs, or workbench UI.
 
 ## Continue the Work
