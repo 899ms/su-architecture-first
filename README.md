@@ -69,7 +69,7 @@ Natural-language prompt:
 Use architecture-first reasoning for this problem. First infer my real intent from the available context. Only if a material uncertainty could change the outcome, pause to ask me, with at most two questions in one clarification turn. If I am unsure, do not repeat the same question; guide me with concrete options, examples, or tradeoffs until we agree on the goal, scope, and task granularity, then start the work.
 ```
 
-If a request contains the Chinese phrase `架构优先`—including `用架构优先的方式看这个问题`—invoke this Skill without requiring the user to name it.
+If a request contains the phrase `architecture-first`—including `use architecture-first reasoning for this problem`—invoke this Skill without requiring the user to name it.
 
 Or invoke it directly:
 
@@ -93,7 +93,7 @@ Even without an explicit architecture-first phrase, the Skill should activate wh
 For a small, clear change:
 
 ```text
-架构优先：给设置页增加导出按钮。目标和归属明确的话，快速判断后直接做。
+Architecture-first: Add an export button to the settings page. If the goal and ownership are clear, run a quick pass and implement it.
 ```
 
 For a recurring problem:
@@ -105,7 +105,7 @@ For a recurring problem:
 For an authorized implementation:
 
 ```text
-直接开工，但先做最小充分的架构判断；不要重复询问实施授权。
+Start the implementation, but first run the smallest sufficient architecture preflight. Do not ask for implementation authorization again.
 ```
 
 ## References
